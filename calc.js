@@ -4,7 +4,6 @@ function insert(num) {
   }
  else {
     document.getElementById('res').value += num;
-    console.log(num); 
   }
 }
 
