@@ -1,45 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>calculator</title> 
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="img/favicon.png.crdownload" sizes="64x64" />
 </head>
 <body>
-  <div class="calc">
-    <div class="calc-screen">
-      <div class="navigation">
-        <div class="red click" title="Закрити"></div>
-        <div class="yellow click" title="Згорнути"></div>
-        <div class="green click" title="Історія"></div>
+  <div class="main">
+    <div class="screen">
+      <div class="options">
+        <div class="closed"></div>
+        <div class="white_designe"></div>
+        <div class="history"></div>
       </div>
-      <div class="out">
-        <p>0</p>
-      </div>
-    </div>
-    <div class="buttons">
-      <div class="btn darkgrey click">AC</div>
-      <div class="btn darkgrey click">+/-</div>
-      <div class="btn darkgrey click">%</div>
-      <div class="btn orange click">÷</div>
-      <div class="btn click">7</div>
-      <div class="btn click">8</div>
-      <div class="btn click">9</div>
-      <div class="btn orange click">x</div>
-      <div class="btn click">4</div>
-      <div class="btn click">5</div>
-      <div class="btn click">6</div>
-      <div class="btn orange click">-</div>
-      <div class="btn click">1</div>
-      <div class="btn click">2</div>
-      <div class="btn click">3</div>
-      <div class="btn orange click">+</div>
-      <div class="btn zero click">0</div>
-      <div class="btn click">,</div>
-      <div class="btn equal orange click">=</div>
-    </div>
- </div>
+      <input class="result" type="text" value="0"  id="res" disabled>
+    </div>  
+    <div class="input">
+      <input class="btns darkgrey_color" type="button" value="AC" onclick="insert(' ')" />
+      <input class="btns darkgrey_color" type="button" value="+/-" onclick="insert('+/-')" />
+      <input class="btns darkgrey_color" type="button" value="%" onclick="insert('%')" />
+      <input class="btns orange_color" type="button" value="/" onclick="insert('/')" />
+      <input class="btns" type="button" value="7" onclick="insert('7')" />
+      <input class="btns" type="button" value="8" onclick="insert('8')" />
+      <input class="btns" type="button" value="9" onclick="insert('9')" />
+      <input class="btns orange_color" type="button" value="x" onclick="insert('*')" />
+      <input class="btns" type="button" value="4"onclick="insert('4')" />
+      <input class="btns" type="button" value="5"onclick="insert('5')" />
+      <input class="btns" type="button" value="6" onclick="insert('6')" />
+      <input class="btns orange_color" type="button" value="-" onclick="insert('-')" />
+      <input class="btns" type="button" value="1" onclick="insert('1')" />
+      <input class="btns" type="button" value="2" onclick="insert('2')" />
+      <input class="btns" type="button" value="3" onclick="insert('3')" />
+      <input class="btns orange_color" type="button" value="+" onclick="insert('+')" />
+      <input class="btns zero" type="button" value="0" onclick="insert('0')" />
+      <input class="btns" type="button" value="," onclick="insert(',')" />
+      <input class="btns orange_color equal" type="button" value="=" onclick="insert('=')" />
+     </div>
+  </div>
+  <script src="calc.js"></script>
 </body>
 </html>
