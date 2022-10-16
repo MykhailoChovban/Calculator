@@ -18,27 +18,74 @@
       <input class="result" type="text" value="0"  id="res" disabled>
     </div>  
     <div class="input">
-      <input class="btns darkgrey_color" type="button" value="AC" />
+      <input class="btns darkgrey_color" type="button" value="AC" id="2" onclick= "allClear()" />
       <input class="btns darkgrey_color" type="button" value="+/-" onclick="insert('+/-')" />
       <input class="btns darkgrey_color" type="button" value="%" onclick="insert('%')" />
-      <input class="btns orange_color" type="button" value="/" onclick="insert('/')" />
+      <input class="btns orange_color" type="button" value="/" onclick="insert('/', true)" />
       <input class="btns" type="button" value="7" onclick="insert('7')" />
       <input class="btns" type="button" value="8" onclick="insert('8')" />
       <input class="btns" type="button" value="9" onclick="insert('9')" />
-      <input class="btns orange_color" type="button" value="x" onclick="insert('*')" />
+      <input class="btns orange_color" type="button" value="x" onclick="insert('*', true)" />
       <input class="btns" type="button" value="4"onclick="insert('4')" />
       <input class="btns" type="button" value="5"onclick="insert('5')" />
       <input class="btns" type="button" value="6" onclick="insert('6')" />
-      <input class="btns orange_color" type="button" value="-" onclick="insert('-')" />
-      <input class="btns" type="button" value="1" onclick="insert('1')" />
+      <input class="btns orange_color" type="button" value="-" onclick="insert('-', true)" />
+      <input class="btns" type="button" value="1" id="1" onclick="insert('1')" />
       <input class="btns" type="button" value="2" onclick="insert('2')" />
-      <input class="btns" type="button" value="3" onclick="insert('3')" />
-      <input class="btns orange_color" type="button" value="+" onclick="insert('+')" />
+      <input class="btns" type="button" value="3" id="1" onclick="insert('3')" />
+      <input class="btns orange_color" type="button" id="1" value="+" onclick="insert('+', true)" />
       <input class="btns zero" type="button" value="0" onclick="insert('0')" />
-      <input class="btns" type="button" value="," onclick="insert(',')" />
-      <input class="btns orange_color equal" type="button" value="=" />
+      <input class="btns" type="button" value="," onclick="insert('.')" />
+      <input class="btns orange_color equal" type="button" value="=" onclick="equal()" />
      </div>
   </div>
-  <script src="calc.js"></script>
+  <script>
+    let isLastEqual = false;
+    function equal() {
+      const input = document.getElementById('res').value;
+      const resault = input.split(/\+|\-|\*|\//, 2);
+      const [operators] = input.match(/\+|\-|\*|\//);
+      const obj = {
+        "+": (num1, num2) => (num1 + num2),
+        "-": (num1, num2) => (num1 - num2),
+        "*": (num1, num2) => (num1 * num2).toFixed(1),
+        "/": (num1, num2) => (num1 / num2).toFixed(3),
+      }
+
+      const num1 = parseFloat(resault[0]);
+      const num2 = parseFloat(resault[1]);
+    
+      if (isNaN(num1) && isNaN(num2)) {
+          alert('Your numbers is not valide');
+      }
+      if (operators && !isNaN(num1) && !isNaN(num2)) {
+          var x = (obj[operators](num1,num2))
+          document.getElementById('res').value = x; 
+          isLastEqual = true;
+      }
+    }
+
+    function insert(num, notNumber) {
+      if (isLastEqual && !notNumber ) {
+        allClear();
+      } 
+      isLastEqual = false;
+      if (num === "."){
+          document.getElementById('res').value += num;
+          return;
+      }    
+      if (document.getElementById('res').value === "0"){
+          document.getElementById('res').value = num;
+      }
+      else {(document.getElementById('res').value += num)
+      }
+        
+    }
+
+    function allClear() {
+      document.getElementById('res').value = "0";
+    }
+
+</script>
 </body>
 </html>
